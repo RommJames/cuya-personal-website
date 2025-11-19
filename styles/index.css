@@ -644,29 +644,33 @@ nav {
 .featured-cards-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 35px;
   justify-content: center;
 }
 
 .featured-card {
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 15px;
   overflow: hidden;
-  width: 300px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  width: 350px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, height 0.4s ease; /* 🔥 added for hover expansion */
 }
 
 .featured-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+  /* height: 620px; */
 }
 
 .card-thumbnail img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -674,7 +678,8 @@ nav {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  flex: 1;
 }
 
 .card-title {
@@ -686,7 +691,32 @@ nav {
 .card-caption {
   font-size: 0.95rem;
   color: #676553;
-  min-height: 40px; /* Keep card heights consistent */
+  line-height: 1.4rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  max-height: 110px;
+  transition: all 0.3s ease;
+}
+
+.card-caption:hover {
+  -webkit-line-clamp: unset;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.featured-card:hover .card-caption::-webkit-scrollbar {
+  width: 6px;
+}
+
+.featured-card:hover .card-caption::-webkit-scrollbar-thumb {
+  background-color: #e6a93f;
+  border-radius: 3px;
+}
+
+.featured-card:hover .card-caption::-webkit-scrollbar-track {
+  background: #f7f7f7;
 }
 
 .card-tech {
@@ -699,7 +729,8 @@ nav {
 }
 
 .card-tech span {
-  background-color: #f7d540;
+  background-color: transparent;
+  border: 1px solid #ddd;
   color: #333;
   padding: 3px 8px;
   border-radius: 6px;
@@ -709,7 +740,7 @@ nav {
 .card-links {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: auto;
 }
 
 .card-links a {
